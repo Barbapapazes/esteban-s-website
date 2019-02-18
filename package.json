@@ -1,0 +1,20 @@
+{
+  "name": "esteban-s-website",
+  "version": "0.0.1",
+  "description": "personnal web site of esteban",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barbapapazes/esteban-s-website.git"
+  },
+  "author": "esteban soubiran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Barbapapazes/esteban-s-website/issues"
+  },
+  "homepage": "https://github.com/Barbapapazes/esteban-s-website#readme"
+}
