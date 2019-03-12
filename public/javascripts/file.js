@@ -3,7 +3,7 @@ let subtitle = document.querySelector('.content__subtitle') // Select the subtit
 
 let xhttp = new XMLHttpRequest() // Create the http request
 
-document.querySelector('.langFR').addEventListener('click', function() {
+document.querySelector('.nav__lang__fr').addEventListener('click', function() {
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -16,7 +16,7 @@ document.querySelector('.langFR').addEventListener('click', function() {
     xhttp.send()
 })
 
-document.querySelector('.langEN').addEventListener('click', function() {
+document.querySelector('.nav__lang__en').addEventListener('click', function() {
 
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

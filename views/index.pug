@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  div(class="main")
-    div(class="lang")
-      div(class="langFR") FR
-      div(class="langEN") EN
-    div(class="content")
-      div(class="content__title") < Hello World >
-      
-      div(class="content__subtitle") coming soon...
+  header.nav
+    .nav__lang
+      .nav__lang__fr fr
+      .nav__lang__en en
+  .content
+    .content__title &lt; hello world &gt;
+    .content__subtitle coming soon...
+
 
     script(src="javascripts/file.js")
 
