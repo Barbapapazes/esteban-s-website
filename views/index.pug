@@ -1,15 +1,16 @@
 extends layout
 
 block content
-  header.nav
-    .nav__lang
-      .nav__lang__fr fr
-      .nav__lang__en en
+  header
+    nav
+    .lang
+      .lang__fr fr
+      .lang__en en
   .content
     .content__title &lt; hello world &gt;
     .content__subtitle coming soon...
 
-
-    script(src="javascripts/index.js")
+block append foot
+  script(src="javascripts/index.js")
 
     

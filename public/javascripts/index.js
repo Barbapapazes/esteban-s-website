@@ -4,12 +4,12 @@ let subtitle = document.querySelector('.content__subtitle') // Select the subtit
 let xhttp = new XMLHttpRequest() // Create the http request
 
 // Listener for change the language of the site
-document.querySelector('.nav__lang__fr').addEventListener('click', function() {
+document.querySelector('.lang__fr').addEventListener('click', function() {
     updateContent('/data/langFR.json')
 })
 
 // Listener for change the language of the site
-document.querySelector('.nav__lang__en').addEventListener('click', function() {
+document.querySelector('.lang__en').addEventListener('click', function() {
     updateContent('/data/langEN.json')
 })
 

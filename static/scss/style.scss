@@ -13,23 +13,19 @@ body {
     font-family: sans-serif;
 }
 
-.nav {
+.lang {
     display: flex;
     flex-direction: row;
-    &__lang {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        width: 100%;
-        &__fr,
-        &__en {
-            margin: 5px;
-            padding: 5px;
-            color: #6a9955;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
+    justify-content: flex-end;
+    width: 100%;
+    &__fr,
+    &__en {
+        margin: 5px;
+        padding: 5px;
+        color: #6a9955;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        cursor: pointer;
     }
 }
 
@@ -49,6 +45,16 @@ body {
     &__subtitle {
         color: rgb(107, 107, 107);
         font-size: 1.5rem;
+    }
+}
+
+footer {
+    .me {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        color: #6a9955;
+        font-size: 0.8rem;
     }
 }
 
