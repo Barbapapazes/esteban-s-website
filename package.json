@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "scss-watch": "sass  --watch static/scss:public/stylesheets --style compressed",
-        "scss-compile": "sass --update static/scss:public/stylesheets --style compressed",
+        "scss-watch": "sass  --watch public/stylesheets:public/stylesheets --style compressed",
+        "scss-compile": "sass --update public/stylesheets:public/stylesheets --style compressed",
         "start": "node ./bin/www",
         "devstart": "nodemon ./bin/www"
     },

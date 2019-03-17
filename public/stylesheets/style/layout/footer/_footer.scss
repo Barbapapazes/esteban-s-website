@@ -1,0 +1,10 @@
+footer {
+    .me {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        color: $color-title;
+        font-size: 0.8rem;
+        padding-bottom: 10px;
+    }
+}
