@@ -22,9 +22,12 @@ app.use(cookieParser());
 app.use(sassMiddleware({
     src: path.join(__dirname, 'public'),
     dest: path.join(__dirname, 'public'),
-    indentedSyntax: false, // true = .sass and false = .scss
+    indentedSyntax: false,
+    // true = .sass and false = .scss
+    outputStyle: 'compressed',
     sourceMap: true
 }));
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
