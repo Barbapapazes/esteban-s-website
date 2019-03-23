@@ -1,0 +1,54 @@
+/*
+Variables
+*/
+
+$color: #6a9955;
+$color-title: #6a9955;
+$color-subtitle: rgb(107, 107, 107);
+// Dark theme
+$color-dark-text: white;
+$color-dark-background: #171717;
+$color-dark-header-background: #575757;
+$color-dark-footer-background: #575757;
+$color-dark-hover: #4b4b4b;
+// Light theme
+$color-light-text: black;
+$color-light-background: white;
+$color-light-header-background: #f7f7f7;
+$color-light-footer-background: #f7f7f7;
+$color-light-hover: #e0e0e0;
+// Button
+$color-btn: grey;
+$color-btn-active: #00acee;
+
+/*
+Mixins
+*/
+
+@mixin theme ($color, $color-text, $color-title, $color-subtitle, $color-background, $color-header-background, $color-footer-background, $color-hover) {
+    color: $color-text;
+    background-color: $color-background;
+    header {
+        background-color: $color-header-background;
+    }
+    .lang {
+        &__fr,
+        &__en {
+            color: $color;
+        }
+    }
+    .content {
+        &__title {
+            color: $color-title;
+        }
+        &__subtitle {
+            color: $color-subtitle;
+        }
+    }
+    footer {
+        background-color: $color-footer-background;
+        .me {
+            color: $color-title;
+        }
+    }
+}

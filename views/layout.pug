@@ -7,9 +7,18 @@ html
     title= title
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  body.dark
+    block header
+    header
+      nav
+      .container
+        .container__toggle-btn
+         .container__toggle-btn__inner-cercle
+
     block content
     block foot
       footer
         .me Est&eacute;ban SOUBIRAN
-
+        .lang
+          .lang__fr fr
+          .lang__en en
