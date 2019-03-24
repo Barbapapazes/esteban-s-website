@@ -20,6 +20,11 @@ $color-light-hover: #e0e0e0;
 // Button
 $color-btn: grey;
 $color-btn-active: #00acee;
+//Transition
+$duration-shorter: 0.2s;
+$duration-short: 0.4s;
+$duration-med: 0.6s;
+$duration-long: 1s;
 
 /*
 Mixins
@@ -28,8 +33,21 @@ Mixins
 @mixin theme ($color, $color-text, $color-title, $color-subtitle, $color-background, $color-header-background, $color-footer-background, $color-hover) {
     color: $color-text;
     background-color: $color-background;
+    a {
+        color: $color;
+    }
     header {
         background-color: $color-header-background;
+        nav {
+            a {
+                &::after {
+                    background-color: $color;
+                }
+                &:hover {
+                    color: $color-hover;
+                }
+            }
+        }
     }
     .lang {
         &__fr,

@@ -11,6 +11,8 @@ html
     block header
     header
       nav
+        a(href="/") Home
+        a(href="/about") About
       .container
         .container__toggle-btn
          .container__toggle-btn__inner-cercle
@@ -18,7 +20,10 @@ html
     block content
     block foot
       footer
-        .me Est&eacute;ban SOUBIRAN
+        .me
+          a(href="/about/me") Est&eacute;ban SOUBIRAN
         .lang
           .lang__fr fr
           .lang__en en
+      script(src="/javascripts/toggleBtn.js")
+
