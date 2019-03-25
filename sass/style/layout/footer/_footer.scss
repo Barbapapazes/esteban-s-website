@@ -3,12 +3,12 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    height: 5%;
+    height: 4%;
+    min-height: 30px;
     .me {
         display: flex;
         flex-direction: row;
         font-size: 0.8rem;
-        padding: 5px 0;
     }
     .lang {
         display: flex;
@@ -16,7 +16,7 @@ footer {
         justify-content: flex-end;
         &__fr,
         &__en {
-            padding: 5px;
+            padding: 0 5px;
             font-size: 1rem;
             text-transform: uppercase;
             cursor: pointer;

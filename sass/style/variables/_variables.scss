@@ -5,6 +5,7 @@ Variables
 $color: #6a9955;
 $color-title: #6a9955;
 $color-subtitle: rgb(107, 107, 107);
+$color-text-hover: black;
 // Dark theme
 $color-dark-text: white;
 $color-dark-background: #171717;
@@ -30,7 +31,7 @@ $duration-long: 1s;
 Mixins
 */
 
-@mixin theme ($color, $color-text, $color-title, $color-subtitle, $color-background, $color-header-background, $color-footer-background, $color-hover) {
+@mixin theme ($color, $color-text, $color-title, $color-subtitle, $color-background, $color-header-background, $color-footer-background, $color-text-hover) {
     color: $color-text;
     background-color: $color-background;
     a {
@@ -44,7 +45,7 @@ Mixins
                     background-color: $color;
                 }
                 &:hover {
-                    color: $color-hover;
+                    color: $color-text-hover;
                 }
             }
         }

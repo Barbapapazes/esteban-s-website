@@ -1,4 +1,4 @@
 // GET Index 
 exports.index = function(req, res, next) {
-    res.render('index', { title: 'Estéban\'s Website', req: req });
+    res.render('index', { title: 'Estéban\'s Website' });
 }

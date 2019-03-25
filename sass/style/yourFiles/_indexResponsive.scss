@@ -5,3 +5,15 @@
         }
     }
 }
+
+@media screen and (max-height: 600px) {
+    .content {
+        height: 92%;
+    }
+}
+
+@media screen and (max-height: 380px) {
+    .content {
+        height: 88%;
+    }
+}
