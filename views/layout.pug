@@ -12,8 +12,8 @@ html
     block header
     header
       nav
-        a(href="/") Home
-        a(href= "/about") About
+        a(href="/") #{i18n.__("layout.home")}
+        a(href= "/about") #{i18n.__("layout.about")}
       .container
         .container__toggle-btn
          .container__toggle-btn__inner-cercle
@@ -24,7 +24,7 @@ html
         .me
           a(href="/about/me") Est&eacute;ban SOUBIRAN
         .lang
-          .lang__fr fr
-          .lang__en en
+          a(href="/fr" class="lang__fr") fr
+          a(href="/en" class="lang__en") en
       script(src="/javascripts/toggleBtn.js")
 
