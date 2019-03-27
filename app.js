@@ -32,10 +32,10 @@ app.use('/stylesheets', sassMiddleware({
 // set up i18n, for support multiple languages
 var i18n = require('./services/i18n')
 
-app.use(cookieParser("i18n_demo"));
+app.use(cookieParser("PSZg88X]cu;U`vs<"));
 
 app.use(session({
-    secret: "i18n_demo",
+    secret: "PSZg88X]cu;U`vs<",
     resave: true,
     saveUninitialized: true,
     cookie: { maxAge: 60000 }

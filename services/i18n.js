@@ -1,5 +1,6 @@
 var i18n = require('i18n')
 
+
 i18n.configure({
 
     //define how many languages we would support in our application
@@ -14,5 +15,6 @@ i18n.configure({
     // define a custom cookie name to parse locale settings from 
     cookie: 'i18n'
 });
+
 
 module.exports = i18n;

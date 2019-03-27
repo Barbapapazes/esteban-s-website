@@ -4,9 +4,9 @@
 
     // Web Storage
     if (!localStorage.getItem('theme')) {
-        populateStorage()
+        populateStorageTheme()
     } else {
-        setStyle()
+        setStyleTheme()
     }
 
     /*let url = new URL(window.location)
@@ -20,7 +20,7 @@
     function switchTheme() {
         body.classList.toggle('light')
         body.classList.toggle('dark')
-        populateStorage()
+        populateStorageTheme()
 
 
         /*for (let index = 0; index < href.length; index++) {
@@ -37,13 +37,13 @@
         }*/
     }
 
-    function populateStorage() {
+    function populateStorageTheme() {
         localStorage.setItem('theme', body.classList.value)
 
-        setStyle()
+        setStyleTheme()
     }
 
-    function setStyle() {
+    function setStyleTheme() {
         let currentTheme = localStorage.getItem('theme')
         body.classList.value = currentTheme
         if (body.classList.value === 'light')
