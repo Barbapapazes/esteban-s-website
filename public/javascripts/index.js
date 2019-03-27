@@ -1,4 +1,4 @@
-/*let title = document.querySelector('.content__title') // Select the title 
+let title = document.querySelector('.content__title') // Select the title 
 let subtitle = document.querySelector('.content__subtitle') // Select the subtitle
 
 let xhttp = new XMLHttpRequest() // Create the http request
@@ -24,4 +24,4 @@ let updateContent = function(url) {
     }
     xhttp.open("GET", url, true)
     xhttp.send()
-}*/
+}
