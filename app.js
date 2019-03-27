@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var session = require('express-session')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
@@ -19,7 +20,6 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use('/stylesheets', sassMiddleware({
     src: path.join(__dirname, 'sass'),
     dest: path.join(__dirname, 'public/stylesheets'),

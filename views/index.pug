@@ -2,8 +2,8 @@ extends layout
 
 block content
   main.content
-    .content__title &lt; hello world &gt;
-    .content__subtitle coming soon...
+    .content__title #{i18n.__("index.title")}
+    .content__subtitle #{i18n.__("index.subtitle")}
 
 block append foot
   script(src="javascripts/index.js")
