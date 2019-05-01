@@ -8,7 +8,8 @@ var sassMiddleware = require('node-sass-middleware');
 
 
 var indexRouter = require('./routes/index');
-var aboutRouter = require('./routes/about')
+var projectsRouter = require('./routes/projects');
+var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -47,6 +48,7 @@ app.use(i18n.init);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/projects', projectsRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 

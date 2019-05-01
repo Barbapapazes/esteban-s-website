@@ -7,12 +7,12 @@ html
     title= title
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  //- var theme = req.query.theme
   body.dark
     block header
     header
       nav
         a(href="/") #{i18n.__("layout.home")}
+        a(href="/projects") #{i18n.__("layout.projects")}
         a(href= "/about") #{i18n.__("layout.about")}
       .container
         .container__toggle-btn

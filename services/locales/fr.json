@@ -1,6 +1,9 @@
 {
     "layout.home": "acceuil",
+    "layout.projects": "projets",
     "layout.about": "A Propos",
     "index.title": "<hello world>",
-    "index.subtitle": "prochainement..."
+    "index.subtitle": "prochainement...",
+    "projects.title": "Page Principale",
+    "projects.subtitle": "pour tous mes projets"
 }
