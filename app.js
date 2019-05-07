@@ -8,6 +8,8 @@ var sassMiddleware = require('node-sass-middleware');
 
 
 var indexRouter = require('./routes/index');
+var langRouter = require('./routes/lang');
+var homeRouter = require('./routes/home');
 var projectsRouter = require('./routes/projects');
 var aboutRouter = require('./routes/about');
 var usersRouter = require('./routes/users');
@@ -48,6 +50,8 @@ app.use(i18n.init);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/lang', langRouter);
+app.use('/home', homeRouter);
 app.use('/projects', projectsRouter);
 app.use('/about', aboutRouter);
 app.use('/users', usersRouter);

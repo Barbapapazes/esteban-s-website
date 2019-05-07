@@ -4,8 +4,7 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    title= title
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Titillium+Web')
+    title= "Esteban's Website"
     link(rel='stylesheet', href='/stylesheets/style.css')
   body.dark
     block header
@@ -24,7 +23,9 @@ html
         .me
           a(href="/about/me") Est&eacute;ban SOUBIRAN
         .lang
-          a(href="/fr" class="lang__fr") fr
-          a(href="/en" class="lang__en") en
+          a(href="/lang/fr" class="lang__fr") fr
+          a(href="/lang/en" class="lang__en") en
       script(src="/javascripts/toggleBtn.js")
+      script(src="/javascripts/url.js")
+      
 
