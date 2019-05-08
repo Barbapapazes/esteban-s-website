@@ -14,8 +14,7 @@ footer {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        &__fr,
-        &__en {
+        &__btn {
             padding: 0 5px;
             font-size: 1rem;
             text-transform: uppercase;

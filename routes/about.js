@@ -1,12 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
+// Require controller modules
 var about_controller = require('../controllers/aboutController')
 
-/* GET about listing. */
+/// ABOUT ROUTES ///
+
+// GET about home page
 router.get('/', about_controller.about);
 
-/* GET me listing. */
+// GET request to the creator page
 router.get('/me', about_controller.me);
 
 module.exports = router;

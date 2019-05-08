@@ -23,8 +23,9 @@ html
         .me
           a(href="/about/me") Est&eacute;ban SOUBIRAN
         .lang
-          a(href="/lang/fr" class="lang__fr") fr
-          a(href="/lang/en" class="lang__en") en
+          for lang in langs
+            a(href="/lang/" + lang class="lang__btn") #{lang}
+    block scripts      
       script(src="/javascripts/toggleBtn.js")
       script(src="/javascripts/url.js")
       

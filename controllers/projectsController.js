@@ -1,4 +1,4 @@
-// GET the projects home page 
+// Show the projects home page 
 exports.projects = function(req, res, next) {
-    res.render('projects', { i18n: res });
+    res.render('projects', { i18n: res, langs: req.i18n.getLocales() });
 }

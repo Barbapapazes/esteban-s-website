@@ -46,8 +46,12 @@ app.use(session({
 
 //init i18n after cookie-parser
 app.use(i18n.init);
-// montrer l'ensemble des langues et adapters les button en fonction 
-console.log(i18n.getLocales())
+// use the i18n
+app.use(function(req, res, next) {
+    res.i18n = i18n;
+    req.i18n = i18n;
+    next();
+})
 
 app.use(express.static(path.join(__dirname, 'public')));
 
