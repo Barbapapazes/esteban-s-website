@@ -1,0 +1,30 @@
+@media screen and (min-width: 900px) {
+    .article {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .article {
+        width: 93%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .content {
+        &__title {
+            font-size: 3rem;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .article {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column-reverse;
+        &__content {
+            padding: 20px 20px 0 20px;
+        }
+    }
+}

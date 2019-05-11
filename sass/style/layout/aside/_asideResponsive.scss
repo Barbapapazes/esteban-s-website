@@ -1,0 +1,24 @@
+@media screen and(min-width: 900px) {
+    aside {
+        width: 10%;
+    }
+}
+
+@media screen and(min-width: 1500px) {
+    aside {
+        width: 7%;
+    }
+}
+
+@media screen and(max-width: 520px) {
+    aside {
+        position: static;
+        transform: none;
+        width: 100%;
+        .social {
+            width: 95%;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+    }
+}

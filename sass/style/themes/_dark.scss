@@ -1,5 +1,5 @@
 body {
     &.dark {
-        @include theme ( $color, $color-dark-text, $color-title, $color-subtitle, $color-dark-background, $color-dark-header-background, $color-dark-footer-background, $color-text-hover)
+        @include theme ( $color, $color-dark-text, $color-title, $color-subtitle, $color-dark-background, $color-dark-header-background, $color-dark-footer-background, $color-text-hover, $border-radius)
     }
 }

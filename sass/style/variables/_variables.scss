@@ -15,23 +15,34 @@ $color-dark-hover: #4b4b4b;
 // Light theme
 $color-light-text: black;
 $color-light-background: white;
-$color-light-header-background: #f7f7f7;
-$color-light-footer-background: #f7f7f7;
+$color-light-header-background: #e9e9e9;
+$color-light-footer-background: #e9e9e9;
 $color-light-hover: #e0e0e0;
 // Button
 $color-btn: grey;
-$color-btn-active: #00acee;
+$color-btn-active: #6a9955;
 //Transition
 $duration-shorter: 0.2s;
 $duration-short: 0.4s;
 $duration-med: 0.6s;
 $duration-long: 1s;
+// Design
+$border-radius: 5px;
+$border-radius-top: 5px 5px 0 0;
+$depth-shadow-4: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132),
+0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108) !default;
+$depth-shadow-8: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132),
+0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108) !default;
+$depth-shadow-16: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132),
+0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108) !default;
+$depth-shadow-64: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22),
+0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18) !default;
 
 /*
 Mixins
 */
 
-@mixin theme ($color, $color-text, $color-title, $color-subtitle, $color-background, $color-header-background, $color-footer-background, $color-text-hover) {
+@mixin theme ($color, $color-text, $color-title, $color-subtitle, $color-background, $color-header-background, $color-footer-background, $color-text-hover, $border-radius) {
     color: $color-text;
     background-color: $color-background;
     a {
@@ -39,6 +50,7 @@ Mixins
     }
     header {
         background-color: $color-header-background;
+        box-shadow: $depth-shadow-16;
         nav {
             a {
                 &::after {
@@ -64,10 +76,30 @@ Mixins
             color: $color-subtitle;
         }
     }
+    .article {
+        &__title {
+            color: $color-title;
+            &::after {
+                background-color: $color;
+            }
+        }
+    }
+    aside {
+        .social {
+            border-radius: $border-radius;
+            background-color: $color-header-background;
+            box-shadow: $depth-shadow-8;
+            &:hover {
+                box-shadow: $depth-shadow-16;
+            }
+        }
+    }
     footer {
         background-color: $color-footer-background;
+        border-radius: $border-radius-top;
         .me {
             color: $color-title;
         }
     }
+    hr {}
 }
