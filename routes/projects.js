@@ -9,4 +9,7 @@ var projects_controller = require('../controllers/projectsController')
 // GET projects home page
 router.get('/', projects_controller.projects);
 
+// GET create page
+router.get('/posts/create', projects_controller.create)
+
 module.exports = router;

@@ -12,6 +12,9 @@ i18n.configure({
     //define the default language
     defaultLocale: 'en',
 
+    // enable JSON format
+    objectNotation: true,
+
     // define a custom cookie name to parse locale settings from 
     cookie: 'i18n'
 });
