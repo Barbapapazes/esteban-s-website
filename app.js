@@ -1,42 +1,49 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var session = require('express-session')
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
+// Require
+const createError = require('http-errors')
+const express = require('express')
+const path = require('path')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const mongoose = require('mongoose')
+
+// Router for all routes
+const indexRouter = require('./routes/index')
+const langRouter = require('./routes/lang')
+const homeRouter = require('./routes/home')
+const projectsRouter = require('./routes/projects')
+const aboutRouter = require('./routes/about')
+const usersRouter = require('./routes/users')
+
+// Middlewares
+const sassMiddleware = require('./middlewares/sass')
+    // set up i18n, for support multiple languages
+const i18n = require('./services/i18n')
 
 
-var indexRouter = require('./routes/index');
-var langRouter = require('./routes/lang');
-var homeRouter = require('./routes/home');
-var projectsRouter = require('./routes/projects');
-var aboutRouter = require('./routes/about');
-var usersRouter = require('./routes/users');
+// Create express App
+const app = express()
 
-var app = express();
+// Connection to mongoose
+mongoose.connect('mongodb://localhost:27017/esteban-s-website', { useNewUrlParser: true })
+    .then(() => 'You are now connected to mongo!')
+    .catch(err => console.error('Something went wrong', err))
 
-// view engine setup
+// View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
+// Use definition for express
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/stylesheets', sassMiddleware({
-    src: path.join(__dirname, 'sass'),
-    dest: path.join(__dirname, 'public/stylesheets'),
-    indentedSyntax: false,
-    // true = .sass and false = .scss
-    outputStyle: 'compressed',
-    sourceMap: true
-}));
-
-// set up i18n, for support multiple languages
-var i18n = require('./services/i18n')
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/stylesheets', sassMiddleware);
 
 app.use(cookieParser("PSZg88X]cu;U`vs<"));
 
+// Create Session
 app.use(session({
     secret: "PSZg88X]cu;U`vs<",
     resave: true,
@@ -53,8 +60,7 @@ app.use(function(req, res, next) {
     next();
 })
 
-app.use(express.static(path.join(__dirname, 'public')));
-
+// Use path 
 app.use('/', indexRouter);
 app.use('/lang', langRouter);
 app.use('/home', homeRouter);

@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    .content
+        .content__title #{i18n.__("posts.create.title")}
+        .dashbord
+            form(action="/projects/posts/store", method="POST")
+                .form-groupe.title-input
+                    label(for="title") Title
+                    input(type="text", name="title", id="title",placeholder="title")
+                .form-groupe.description-input
+                    label(for="description") Description
+                    input(type="text", name="description", id="description",placeholder="description")
+                .form-groupe.content-input
+                    label(for="content") Content
+                    textarea(name="content", id="content", cols="30", rows="10", placeholder="content")
+                .form-groupe.username-input
+                    label(for="username") Username
+                    input(type="text", name="username", id="username",placeholder="username")
+                .form-groupe.button-input
+                    button(type="submit") Submit
+                    button(type="reset") Reset

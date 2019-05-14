@@ -12,4 +12,7 @@ router.get('/', projects_controller.projects);
 // GET create page
 router.get('/posts/create', projects_controller.create)
 
+//POST a new position: 
+router.post('/posts/store', projects_controller.store)
+
 module.exports = router;
