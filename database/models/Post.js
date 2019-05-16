@@ -11,6 +11,11 @@ const PostShema = new mongoose.Schema({
     }
 })
 
+// Virtual for post's URL
+PostShema.virtual('url').get(function() {
+    return '/projects/post/' + this._id
+})
+
 const Post = mongoose.model('Post', PostShema)
 
 module.exports = Post

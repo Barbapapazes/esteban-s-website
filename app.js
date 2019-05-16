@@ -6,6 +6,7 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
+const connectMongo = require('connect-mongo')
 
 // Router for all routes
 const indexRouter = require('./routes/index')
@@ -17,7 +18,8 @@ const usersRouter = require('./routes/users')
 
 // Middlewares
 const sassMiddleware = require('./middlewares/sass')
-    // set up i18n, for support multiple languages
+
+// set up i18n, for support multiple languages
 const i18n = require('./services/i18n')
 
 
@@ -43,12 +45,18 @@ app.use('/stylesheets', sassMiddleware);
 
 app.use(cookieParser("PSZg88X]cu;U`vs<"));
 
+// create the store for cookies id
+const mongoStore = connectMongo(session)
+
 // Create Session
 app.use(session({
     secret: "PSZg88X]cu;U`vs<",
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 60000 },
+    store: new mongoStore({
+        mongooseConnection: mongoose.connection
+    })
 }));
 
 //init i18n after cookie-parser
