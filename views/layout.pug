@@ -13,6 +13,8 @@ html
         a(href="/") #{i18n.__("layout.home")}
         a(href="/projects") #{i18n.__("layout.projects")}
         a(href= "/about") #{i18n.__("layout.about")}
+        if (session.username)
+          a(href= "/users/logout") logout
       .container
         .container__toggle-btn
          .container__toggle-btn__inner-cercle

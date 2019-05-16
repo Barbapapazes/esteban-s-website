@@ -54,7 +54,7 @@ app.use(session({
     secret: "PSZg88X]cu;U`vs<",
     resave: false,
     saveUninitialized: false,
-    //cookie: { maxAge: (86400000) },
+    cookie: { maxAge: (2 * 86400 * 1000) },
     store: new mongoStore({
         mongooseConnection: mongoose.connection
     })
@@ -66,6 +66,8 @@ app.use(i18n.init);
 app.use(function(req, res, next) {
     res.i18n = i18n;
     req.i18n = i18n;
+    console.log(req.session)
+    res.locals.session = req.session
     next();
 })
 

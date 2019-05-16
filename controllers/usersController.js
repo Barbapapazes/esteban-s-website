@@ -39,18 +39,19 @@ exports.login = (req, res) => {
                     const secret = 'addjsonwebtokensecretherelikeQuiscustodietipsoscustodes';
                     const token = jwt.sign(payload, secret, options);
 
-                    // console.log('TOKEN', token);
+                    //console.log('TOKEN', token);
                     result.token = token;
                     result.status = status;
                     result.result = user;
                     req.session.jwt = token
-
+                    req.session.username = user.name
+                    res.redirect('/')
                 } else {
                     status = 401;
                     result.status = status;
                     result.error = `Authentication error`;
+                    res.status(status).send(result);
                 }
-                res.status(status).send(result);
             }).catch(err => {
                 status = 500;
                 result.status = status;

@@ -14,7 +14,6 @@ exports.validateToken = (req, res, next) => {
             result = jwt.verify(token, 'addjsonwebtokensecretherelikeQuiscustodietipsoscustodes', options)
                 // Let's pass back the decoded token to the request object
                 // We call next to pass execution to the subsequent middleware
-            req.session.username = result.user
             if (result && result.user === 'admin')
                 next();
             else {
