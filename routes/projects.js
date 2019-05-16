@@ -17,7 +17,7 @@ router.get('/all', projects_controller.getAll)
 router.get('/posts/create', validateToken.validateToken, projects_controller.create)
 
 //POST a new position: 
-router.post('/posts/store', projects_controller.store)
+router.post('/posts/store', validateToken.validateToken, projects_controller.store)
 
 // GET view post page
 router.get('/post/:id', projects_controller.viewPost)

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const usersController = require('../controllers/usersController')
 const validateToken = require('../auth/utils')
+const redirectIfAuthenticated = require('../middlewares/redirectIfAuthenticated')
 
 
 /* GET users listing. */
@@ -14,7 +15,8 @@ router.get('/', function(req, res, next) {
 router.post('/add', usersController.add)
 
 // GET & POST to login
-router.get('/login', usersController.loginPage).post('/login', usersController.login)
+router.get('/login', redirectIfAuthenticated, usersController.loginPage)
+    .post('/login', redirectIfAuthenticated, usersController.login)
 
 // GET to logout
 router.get('/logout', usersController.logout)
