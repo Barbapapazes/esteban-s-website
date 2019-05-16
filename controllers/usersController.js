@@ -76,31 +76,19 @@ exports.logout = (req, res, next) => {
 
 // show all users 
 exports.getAll = (req, res, next) => {
-    let result = {};
-    let status = 200;
-
-    const payload = req.decoded;
-    // TODO: Log the payload here to verify that it's the same payload
-    //  we used when we created the token
-    // console.log('PAYLOAD', payload);
-    if (payload && payload.user === 'admin') {
-        User.find({}, (err, users) => {
-            if (!err) {
-                result.status = status;
-                result.error = err;
-                result.result = users;
-                result.username = payload.user
-            } else {
-                status = 500;
-                result.status = status;
-                result.error = err;
-            }
-            res.status(status).send(result);
-        });
-    } else {
-        status = 401;
-        result.status = status;
-        result.error = `Authentication error`;
+    let result = {}
+    let status = 200
+    User.find({}, (err, users) => {
+        if (!err) {
+            result.status = status;
+            result.error = err;
+            result.result = users;
+            result.username = req.session.username
+        } else {
+            status = 500;
+            result.status = status;
+            result.error = err;
+        }
         res.status(status).send(result);
-    }
+    });
 }

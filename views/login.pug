@@ -2,13 +2,15 @@ extends layout
 
 block content
     main.content
+        .content__title login
         form(action="", method="post")
-            .form-groupe.password-input
-                    label(for="name") Name
-                    input(type="text", name="name", id="name",placeholder="name")
-            .form-groupe.password-input
-                    label(for="password") Password
-                    input(type="password", name="password", id="password",placeholder="password")
-            .form-groupe.button-input
-                    button(type="submit") Submit
-                    button(type="reset") Reset
+                fieldset 
+                        .form-group.name-input
+                                label(for="name") Name
+                                input(type="text", name="name", id="name",placeholder="name", required)
+                        .form-group.password-input
+                                label(for="password") Password
+                                input(type="password", name="password", id="password",placeholder="password", autocomplete="current-password", required)
+                        .form-group.button-input
+                                button(type="submit") Login
+                                button(type="reset") Reset

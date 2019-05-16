@@ -16,18 +16,7 @@ exports.getAll = async(req, res) => {
 
 // Show the form to create project
 exports.create = function(req, res) {
-    let result = {};
-    let status = 200;
-
-    const payload = req.decoded;
-    if (payload && payload.user === 'admin') {
-        res.render('createPost', { i18n: res, langs: req.i18n.getLocales() });
-    } else {
-        status = 401;
-        result.status = status;
-        result.error = `Authentication error`;
-        res.status(status).send(result);
-    }
+    res.render('createPost', { i18n: res, langs: req.i18n.getLocales() });
 }
 
 // Store the content from form
@@ -37,7 +26,6 @@ exports.store = function(req, res) {
     }, (err, post) => {
         res.send(req.body)
     })
-
 }
 
 // View the post corresponding to the id

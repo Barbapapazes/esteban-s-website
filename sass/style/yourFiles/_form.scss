@@ -1,0 +1,46 @@
+form {
+    max-width: 300px;
+    width: 35%;
+    min-width: 250px;
+    margin: 20px;
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        legend {
+            text-transform: uppercase;
+            margin: 0 0 10px 10px;
+            padding: 0;
+        }
+        .form-group {
+            & :first-child {
+                margin-top: 10px;
+            }
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10px 10px 10px;
+            label {
+                font-weight: 700;
+            }
+            input {
+                padding: 3px;
+            }
+            &.button-input {
+                & :first-child {
+                    margin-bottom: 10px;
+                }
+                button {
+                    width: 100%;
+                    font-weight: 700;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

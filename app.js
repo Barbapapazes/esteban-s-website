@@ -16,8 +16,6 @@ const projectsRouter = require('./routes/projects')
 const aboutRouter = require('./routes/about')
 const usersRouter = require('./routes/users')
 
-// Middlewares
-const sassMiddleware = require('./middlewares/sass')
 
 // set up i18n, for support multiple languages
 const i18n = require('./services/i18n')
@@ -25,6 +23,9 @@ const i18n = require('./services/i18n')
 
 // Create express App
 const app = express()
+
+// Middlewares
+const sassMiddleware = require('./middlewares/sass')
 
 // Connection to mongoose
 mongoose.connect('mongodb://localhost:27017/esteban-s-website', { useNewUrlParser: true })
@@ -40,8 +41,8 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use('/stylesheets', sassMiddleware);
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieParser("PSZg88X]cu;U`vs<"));
 
@@ -53,7 +54,7 @@ app.use(session({
     secret: "PSZg88X]cu;U`vs<",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60000 },
+    //cookie: { maxAge: (86400000) },
     store: new mongoStore({
         mongooseConnection: mongoose.connection
     })
@@ -68,7 +69,7 @@ app.use(function(req, res, next) {
     next();
 })
 
-// Use path 
+// Path
 app.use('/', indexRouter);
 app.use('/lang', langRouter);
 app.use('/home', homeRouter);
