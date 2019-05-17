@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 const usersController = require('../controllers/usersController')
 const validateToken = require('../auth/utils')
 const redirectIfAuthenticated = require('../middlewares/redirectIfAuthenticated')

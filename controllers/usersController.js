@@ -1,20 +1,45 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { body, check, oneOf, validationResult } = require('express-validator/check')
+const { sanitizeBody } = require('express-validator/filter')
 const User = require('../database/models/User')
 
 // create user
-exports.add = function(req, res, next) {
-    console.log(req.body)
-    let user = new User({
-        name: req.body.name,
-        password: req.body.password
-    })
-    user.save(function(err) {
-        if (err) { return next(err) }
-        res.send('successful')
-    })
-}
+exports.add = [
 
+    // Validate that the name field is not empty.
+    body('name', 'Min: 3 characters').isLength({ min: 3 }).trim(),
+
+    body('password')
+    .matches(/^(?=.{6,})/).withMessage('min 6, max 20 char long')
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])/).withMessage('Must contain one upper case and one lower case')
+    .matches(/^(?=.*\d)/).withMessage('Must contain one digit')
+    .matches(/^(?=.*[!@#\$%\^&\*])/).withMessage('Must contain one special char'),
+
+    (req, res, next) => {
+
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            // There are errors. Render the form again with sanitized values/error messages.
+            res.send(errors.array())
+        } else {
+            // Data form is valid
+            console.log(req.body)
+            let user = new User({
+                name: req.body.name,
+                password: req.body.password
+            })
+            user.save(function(err) {
+                if (err) { return next(err) }
+                res.send('successful')
+            })
+        }
+
+    }
+]
+
+// Display the login page
 exports.loginPage = (req, res) => {
     res.render('login', { i18n: res, langs: req.i18n.getLocales() });
 }
@@ -66,6 +91,7 @@ exports.login = (req, res) => {
         }
     });
 }
+
 
 exports.logout = (req, res, next) => {
     req.session.destroy((err) => {
