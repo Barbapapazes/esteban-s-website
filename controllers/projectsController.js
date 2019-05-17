@@ -1,4 +1,27 @@
 const url = require('url')
+const emoji = require('markdown-it-emoji')
+const sub = require('markdown-it-sub')
+const sup = require('markdown-it-sup')
+const abbr = require('markdown-it-abbr')
+const ins = require('markdown-it-ins')
+const mark = require('markdown-it-mark')
+const footnote = require('markdown-it-footnote')
+const deflist = require('markdown-it-deflist')
+const container = require('markdown-it-container')
+const md = require('markdown-it')({
+        html: true,
+        linkify: true,
+        typographer: true,
+    })
+    .use(emoji)
+    .use(sub)
+    .use(sup)
+    .use(abbr)
+    .use(ins)
+    .use(mark)
+    .use(footnote)
+    .use(deflist)
+    .use(container)
 const Post = require('../database/models/Post')
 
 // Show the projects home page 
@@ -30,6 +53,8 @@ exports.store = function(req, res) {
 
 // View the post corresponding to the id
 exports.viewPost = async(req, res) => {
-    const post = await Post.findById(req.params.id)
-    res.json(post)
+    let post = await Post.findById(req.params.id)
+    post.text = md.render(post.text)
+    console.log(post.text)
+    res.render('article', { i18n: res, langs: req.i18n.getLocales(), post: post })
 }

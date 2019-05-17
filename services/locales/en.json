@@ -1,5 +1,6 @@
 {
     "layout": {
+        "title": "Esteban's Website",
         "home": "home",
         "projects": "projects",
         "about": "About"

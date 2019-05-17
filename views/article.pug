@@ -1,14 +1,4 @@
-extends layout.pug
+extends layout
 
 block content
-    main.article
-        aside
-            .social
-                a(href="https://github.com/Barbapapazes/", title="GitHub Profile")
-                    img(src="/img/social/github-icon.png", alt="GitHub Profile")
-                a(href="https://www.linkedin.com/in/esteban25/", title="LinkedIn Profile")
-                    img(src="/img/social/linkedin-icon.png", alt="LinkedIn Profile")
-                a(href="https://www.instagram.com/estebansoubiran/", title="Instagram Profile")
-                    img(src="/img/social/instagram-icon.png", alt="Instagram Profile")
-        .article__content
-            block article
+    p(style="margin-top: 50px;") !{post.text}

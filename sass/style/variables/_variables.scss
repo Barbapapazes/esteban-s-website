@@ -128,4 +128,13 @@ Mixins
         }
     }
     hr {}
+    @media screen and(max-width: 800px) {
+        header {
+            nav {
+                ul {
+                    background-color: $color-header-background;
+                }
+            }
+        }
+    }
 }
