@@ -47,7 +47,8 @@ exports.store = function(req, res) {
     Post.create({
         ...req.body
     }, (err, post) => {
-        res.send(req.body)
+        if (err) throw err
+        res.redirect('/')
     })
 }
 

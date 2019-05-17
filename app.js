@@ -28,8 +28,9 @@ const app = express()
 const sassMiddleware = require('./middlewares/sass')
 
 // Connection to mongoose
-mongoose.connect('mongodb://localhost:27017/esteban-s-website', { useNewUrlParser: true })
-    .then(() => 'You are now connected to mongo!')
+const mongoURI = 'mongodb+srv://admin:$Esteban$25@esteban-s-website-or8n8.azure.mongodb.net/test?retryWrites=true'
+mongoose.connect(mongoURI, { useNewUrlParser: true })
+    .then(() => console.log('You are now connected to mongo!'))
     .catch(err => console.error('Something went wrong', err))
 
 // View engine setup
