@@ -5,7 +5,7 @@ const { sanitizeBody } = require('express-validator/filter')
 const User = require('../database/models/User')
 
 // create user
-exports.add = [
+exports.signIn = [
 
     // Validate that the name field is not empty.
     body('name', 'Min: 3 characters').isLength({ min: 3 }).trim(),
@@ -61,7 +61,7 @@ exports.login = (req, res) => {
                     // Create a token
                     const payload = { user: user.name };
                     const options = { expiresIn: '2d', issuer: 'https://esteban-s-website.herokuapp.com' };
-                    const secret = 'addjsonwebtokensecretherelikeQuiscustodietipsoscustodes';
+                    const secret = process.env.JWT_SECRET;
                     const token = jwt.sign(payload, secret, options);
 
                     //console.log('TOKEN', token);

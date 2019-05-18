@@ -6,13 +6,14 @@
         "scss-watch": "sass  --watch public/stylesheets:public/stylesheets --style compressed",
         "scss-compile": "sass --update public/stylesheets:public/stylesheets --style compressed",
         "start": "node ./bin/www",
-        "devstart": "nodemon ./bin/www"
+        "dev": "cross-env NODE_ENV=development nodemon ./bin/www"
     },
     "dependencies": {
         "bcrypt": "^3.0.6",
         "connect-mongo": "^2.0.3",
         "cookie-parser": "~1.4.3",
         "debug": "~2.6.9",
+        "dotenv": "^8.0.0",
         "express": "~4.16.0",
         "express-session": "^1.16.1",
         "express-validator": "^5.3.1",
@@ -46,6 +47,7 @@
     },
     "homepage": "https://github.com/Barbapapazes/esteban-s-website#readme",
     "devDependencies": {
+        "cross-env": "^5.2.0",
         "nodemon": "^1.19.0"
     }
 }

@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 // POST to add user
-router.post('/add', usersController.add)
+router.post('/sign-in', usersController.signIn)
 
 // GET & POST to login
 router.get('/login', redirectIfAuthenticated, usersController.loginPage)

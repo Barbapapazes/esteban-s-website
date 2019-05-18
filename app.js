@@ -1,4 +1,5 @@
-// Require
+require('dotenv').config()
+    // Require
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
@@ -24,11 +25,13 @@ const i18n = require('./services/i18n')
 // Create express App
 const app = express()
 
+const environment = process.env.NODE_ENV
+
 // Middlewares
 const sassMiddleware = require('./middlewares/sass')
 
 // Connection to mongoose
-const mongoURI = 'mongodb+srv://admin:$Esteban$25@esteban-s-website-or8n8.azure.mongodb.net/test?retryWrites=true'
+const mongoURI = process.env.MONGO_ATLAS_URI
 mongoose.connect(mongoURI, { useNewUrlParser: true })
     .then(() => console.log('You are now connected to mongo!'))
     .catch(err => console.error('Something went wrong', err))
@@ -39,7 +42,9 @@ app.set('view engine', 'pug');
 
 
 // Use definition for express
-app.use(logger('dev'));
+if (environment !== 'production') {
+    app.use(logger('dev'));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/stylesheets', sassMiddleware);
