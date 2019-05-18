@@ -19,7 +19,7 @@ html
           if (session.username)
             a(href= "/users/logout") logout
           i.fas.fa-times.btn-close
-      .header-title #{i18n.__("layout.title")}
+      a(href="/", class="header-title") #{i18n.__("layout.title")}
       .container
         .container__toggle-btn
          .container__toggle-btn__inner-cercle

@@ -5,7 +5,7 @@
 }
 
 @media screen and (min-width: 1500px) {
-    .article {
+    .page {
         width: 93%;
     }
 }
@@ -18,8 +18,14 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .page {
+        padding-top: 60px;
+    }
+}
+
 @media screen and (max-width: 520px) {
-    .article {
+    .page {
         width: 100%;
         max-width: 100%;
         flex-direction: column-reverse;

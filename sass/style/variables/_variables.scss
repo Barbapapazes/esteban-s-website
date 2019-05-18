@@ -53,6 +53,9 @@ Mixins
     header {
         background-color: $color-header-background;
         box-shadow: $depth-shadow-16;
+        .header-title {
+            color: $color-title;
+        }
         nav {
             a {
                 &::after {
@@ -150,6 +153,9 @@ Mixins
     @media screen and(max-width: 800px) {
         header {
             nav {
+                i {
+                    color: $color;
+                }
                 ul {
                     background-color: $color-header-background;
                 }

@@ -24,3 +24,25 @@
         }
     }
 }
+
+@media screen and(max-width: 600px) {
+    .container {
+        float: right;
+        padding: 5px 10px 5px 2px;
+        &__toggle-btn {
+            width: 50px;
+            height: 25px;
+            padding: 2.5px;
+            &.active {
+                background-color: $color-btn-active;
+                &>.container__toggle-btn__inner-cercle {
+                    margin-left: 25px;
+                }
+            }
+            &__inner-cercle {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
