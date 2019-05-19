@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    .content
+        form(method='POST', action='/projects/genre/store')
+            fieldset
+                .form-group.genre-input
+                    label(for='name') genre
+                    input(type='text', placeholder='IT, Electronics etc.' name='name' value=(undefined===genre ? '' : genre.name), required='true')
+                .form-group.button-input
+                    button(type="submit") submit
+                    button(type="reset") reset

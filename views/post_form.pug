@@ -1,8 +1,7 @@
-extends layout
+extends layout.pug
 
 block content
     .content
-        .content__title #{i18n.__("posts.create.title")}
         .dashbord
             form(action="/projects/posts/store", method="POST")
                 fieldset
@@ -18,9 +17,14 @@ block content
                     .form-group.text-input
                         label(for="text") text
                         textarea(name="text", id="text", cols="30", rows="10", placeholder="text")
+
                     .form-group.genre-input
                         label(for="genre") genre
-                        input(type="text",name="genre", id="genre", placeholder="genre")
+                        for genre in genres
+                            input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
+                            label(for=genre._id) #{genre.name}
+                            
+                    
                     .form-group.timeToRead-input
                         label(for="timeToRead") time to read
                         input(type="number",name="timeToRead", id="timeToRead", placeholder="minutes")

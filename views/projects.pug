@@ -2,7 +2,7 @@ extends layout.pug
 
 block menu
  if (session.username)
-    a(href= "projects/posts/create") create
+    a(href= "/projects/posts/create") create
 
 block content
     main.posts 
@@ -17,7 +17,8 @@ block content
 
                 .card__body
                     .card__category
-                        a(href=post.url) #{post.genre}
+                        for val in post.genre
+                            a(href=val.url) #{val.name}
                     h2.card__title
                             a(href=post.url) #{post.title}
                     .card__subtitle #{post.subtitle}

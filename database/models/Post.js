@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 
+let Schema = mongoose.Schema
+
 const PostShema = new mongoose.Schema({
-    genre: String,
+    genre: [{ type: Schema.Types.ObjectId, ref: 'Genre' }],
     title: String,
     subtitle: String,
     description: String,
