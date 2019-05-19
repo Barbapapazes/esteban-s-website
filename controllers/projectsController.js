@@ -103,6 +103,11 @@ exports.store_genre = function(req, res) {
 
 // View the post corresponding to the id
 exports.view_genre = async(req, res) => {
-    let genre = await Genre.findById(req.params.id)
-    res.send(genre)
+    Post.find({ 'genre': req.params.id }).populate('genre').exec(function(err, results) {
+        res.render('projects', {
+            i18n: res,
+            langs: req.i18n.getLocales(),
+            posts: results
+        });
+    })
 }
