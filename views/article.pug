@@ -1,4 +1,6 @@
 extends layout
 
 block content
-    article.article !{post.text}
+    article.article 
+        | #{post.title}
+        | !{post.text}

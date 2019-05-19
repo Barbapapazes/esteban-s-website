@@ -150,6 +150,44 @@ Mixins
             box-shadow: $depth-shadow-8;
         }
     }
+    .card {
+        background-color: $color-header-background;
+        box-shadow: $depth-shadow-8;
+        transition: box-shadow $duration-shorter;
+        &__thumb {
+            background-color: black;
+        }
+        &__title {
+            color: $color;
+            .card:hover & {
+                animation: titleBlur $duration-shorter;
+            }
+        }
+        &__subtitle {
+            color: $color;
+            .card:hover & {
+                animation: subtitleBlur $duration-shorter;
+            }
+        }
+        &:hover {
+            box-shadow: $depth-shadow-16;
+        }
+        &__body {
+            background-color: $color-header-background;
+            transition: height $duration-shorter;
+        }
+        &__description {
+            color: $color-text;
+            transition: opacity $duration-shorter - 0.1s, transform $duration-shorter - 0.1s;
+        }
+        &__date {
+            color: $color-text;
+            background-color: $color;
+        }
+        &__footer {
+            color: $color-text;
+        }
+    }
     @media screen and(max-width: 800px) {
         header {
             nav {

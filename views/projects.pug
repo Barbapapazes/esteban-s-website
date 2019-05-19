@@ -1,8 +1,27 @@
-extends layout
+extends layout.pug
+
+block menu
+ if (session.username)
+    a(href= "projects/posts/create") create
 
 block content
-    main.content
-        .content__title #{i18n.__("projects.title")}
-        .content__subtitle #{i18n.__("projects.subtitle")}
+    main.posts 
         for post in posts
-            a(href=post.url) #{post.title}
+            article.card
+                .card__thumb
+                    a(href=post.url)
+                        img(src="https://via.placeholder.com/370x235")
+                    .card__date
+                        .card__date__day #{post.day}
+                        .card__date__month #{post.month}
+
+                .card__body
+                    .card__category
+                        a(href=post.url) #{post.genre}
+                    h2.card__title
+                            a(href=post.url) #{post.title}
+                    .card__subtitle #{post.subtitle}
+                    .card__description #{post.description}
+
+                .card__footer
+                    .icon.icon--time #{post.timeToRead} min

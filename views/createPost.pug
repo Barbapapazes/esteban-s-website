@@ -7,17 +7,26 @@ block content
             form(action="/projects/posts/store", method="POST")
                 fieldset
                     .form-group.title-input
-                        label(for="title") Title
+                        label(for="title") title
                         input(type="text", name="title", id="title",placeholder="title")
+                    .form-group.subtitle-input
+                        label(for="subtitle") subtitle
+                        input(type="text", name="subtitle", id="subtitle",placeholder="subtitle")
                     .form-group.description-input
-                        label(for="description") Description
+                        label(for="description") description
                         input(type="text", name="description", id="description",placeholder="description")
                     .form-group.text-input
-                        label(for="content") Content
+                        label(for="text") text
                         textarea(name="text", id="text", cols="30", rows="10", placeholder="text")
+                    .form-group.genre-input
+                        label(for="genre") genre
+                        input(type="text",name="genre", id="genre", placeholder="genre")
+                    .form-group.timeToRead-input
+                        label(for="timeToRead") time to read
+                        input(type="number",name="timeToRead", id="timeToRead", placeholder="minutes")
                     .form-group.username-input
-                        label(for="username") Username
+                        label(for="username") username
                         input(type="text", name="username", id="username",placeholder="username")
                     .form-group.button-input
-                        button(type="submit") Submit
-                        button(type="reset") Reset
+                        button(type="submit") submit
+                        button(type="reset") reset

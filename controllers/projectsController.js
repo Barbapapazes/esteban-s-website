@@ -28,7 +28,11 @@ const Post = require('../database/models/Post')
 exports.projects = async(req, res) => {
     const posts = await Post.find().sort({ _id: -1 }).limit(5)
 
-    res.render('projects', { i18n: res, langs: req.i18n.getLocales(), posts: posts });
+    res.render('projects', {
+        i18n: res,
+        langs: req.i18n.getLocales(),
+        posts: posts
+    });
 }
 
 // Show all posts

@@ -1,0 +1,32 @@
+@media screen and (max-width: 380px) {
+    .card {
+        & &__date {
+            transform: translate(310px, -222px);
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .card {
+        & &__date {
+            transform: translate(295px, -222px);
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card {
+        &__body {
+            padding: 10px;
+        }
+        & &__title {
+            padding-bottom: 5px;
+        }
+        & &__subtitle {
+            padding-bottom: 5px;
+        }
+        & &__date {
+            transform: translate(250px, -220px);
+        }
+    }
+}

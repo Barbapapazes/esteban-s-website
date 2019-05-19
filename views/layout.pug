@@ -16,8 +16,10 @@ html
           a(href="/") #{i18n.__("layout.home")}
           a(href="/projects") #{i18n.__("layout.projects")}
           a(href= "/about") #{i18n.__("layout.about")}
+          block menu
           if (session.username)
             a(href= "/users/logout") logout
+
           i.fas.fa-times.btn-close
       a(href="/", class="header-title") #{i18n.__("layout.title")}
       .container
