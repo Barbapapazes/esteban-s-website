@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
+let Schema = mongoose.Schema
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -12,6 +14,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    role: {
+        type: Schema.Types.ObjectId,
+        ref: 'Role'
     },
     createdAt: {
         type: Date,
@@ -35,6 +41,11 @@ UserSchema.pre('save', function(next) {
             }
         })
     }
+})
+
+// Virtual for user's URL
+UserSchema.virtual('url').get(function() {
+    return '/projects/user/' + this._id
 })
 
 module.exports = mongoose.model('User', UserSchema)

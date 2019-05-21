@@ -27,14 +27,13 @@ const Genre = require('../database/models/Genre')
 
 // Show the projects home page 
 exports.projects = async(req, res) => {
-    const posts = await Post.find().sort({ _id: -1 }).limit(5).populate('genre').exec(function(err, results) {
+    await Post.find().sort({ _id: -1 }).limit(5).populate('genre').populate('username', 'name').exec((err, posts) => {
         res.render('projects', {
             i18n: res,
             langs: req.i18n.getLocales(),
-            posts: results
+            posts: posts
         });
     })
-
 }
 
 // Show all posts
@@ -50,7 +49,8 @@ exports.post = async(req, res) => {
     res.render('post_form', {
         i18n: res,
         langs: req.i18n.getLocales(),
-        genres: genres
+        genres: genres,
+        username: req.session.user.name
     });
 }
 
@@ -65,9 +65,9 @@ exports.store_post = [
             else
                 req.body.genre = new Array(req.body.genre);
         }
+        req.body.username = req.session.user.id
         next();
     },
-
 
     function(req, res) {
         Post.create({
@@ -103,7 +103,18 @@ exports.store_genre = function(req, res) {
 
 // View the post corresponding to the id
 exports.view_genre = async(req, res) => {
-    Post.find({ 'genre': req.params.id }).populate('genre').exec(function(err, results) {
+    await Post.find({ 'genre': req.params.id }).populate('genre').populate('username', 'name').exec(function(err, results) {
+        res.render('projects', {
+            i18n: res,
+            langs: req.i18n.getLocales(),
+            posts: results
+        });
+    })
+}
+
+// View the post corresponding to the id
+exports.view_userPosts = async(req, res) => {
+    await Post.find({ 'username': req.params.id }).populate('genre').populate('username', 'name').exec(function(err, results) {
         res.render('projects', {
             i18n: res,
             langs: req.i18n.getLocales(),

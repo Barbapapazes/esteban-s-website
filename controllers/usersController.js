@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const { body, check, oneOf, validationResult } = require('express-validator/check')
 const { sanitizeBody } = require('express-validator/filter')
 const User = require('../database/models/User')
+const Role = require('../database/models/Role')
 
 // create user
 exports.signIn = [
@@ -16,7 +17,7 @@ exports.signIn = [
     .matches(/^(?=.*\d)/).withMessage('Must contain one digit')
     .matches(/^(?=.*[!@#\$%\^&\*])/).withMessage('Must contain one special char'),
 
-    (req, res, next) => {
+    async(req, res, next) => {
 
         const errors = validationResult(req)
 
@@ -26,9 +27,11 @@ exports.signIn = [
         } else {
             // Data form is valid
             console.log(req.body)
+            let member = await Role.find({ "role": 'member' })
             let user = new User({
                 name: req.body.name,
-                password: req.body.password
+                password: req.body.password,
+                role: member[0]._id
             })
             user.save(function(err) {
                 if (err) { return next(err) }
@@ -45,21 +48,20 @@ exports.loginPage = (req, res) => {
 }
 
 // login
-exports.login = (req, res) => {
+exports.login = async(req, res) => {
     const { name, password } = req.body;
-
 
     let result = {};
     let status = 200;
 
-    User.findOne({ name }, (err, user) => {
+    await User.findOne({ name }).populate('role').exec((err, user) => {
         if (!err && user) {
             // We could compare passwords in our model instead of below as well
             bcrypt.compare(password, user.password).then(match => {
                 if (match) {
                     status = 200;
                     // Create a token
-                    const payload = { user: user.name };
+                    const payload = { user: user.name, role: user.role.role };
                     const options = { expiresIn: '2d', issuer: 'https://esteban-s-website.herokuapp.com' };
                     const secret = process.env.JWT_SECRET;
                     const token = jwt.sign(payload, secret, options);
@@ -69,7 +71,8 @@ exports.login = (req, res) => {
                     result.status = status;
                     result.result = user;
                     req.session.jwt = token
-                    req.session.username = user.name
+                    req.session.role = user.role.role
+                    req.session.user = { name: user.name, id: user.id }
                     res.redirect('/')
                 } else {
                     status = 401;

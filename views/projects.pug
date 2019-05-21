@@ -1,7 +1,7 @@
 extends layout.pug
 
 block menu
- if (session.username)
+ if (session.role === 'admin')
     a(href= "/projects/posts/create") create
 
 block content
@@ -26,3 +26,4 @@ block content
 
                 .card__footer
                     .icon.icon--time #{post.timeToRead} min
+                    a(href=post.username.url, class="card__writer") #{post.username.name}

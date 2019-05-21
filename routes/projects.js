@@ -31,4 +31,6 @@ router.post('/genre/store', validateToken.validateToken, projects_controller.sto
 // GET view post page
 router.get('/genre/:id', projects_controller.view_genre)
 
+// GET view post page
+router.get('/user/:id', projects_controller.view_userPosts)
 module.exports = router;

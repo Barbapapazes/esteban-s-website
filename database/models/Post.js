@@ -9,7 +9,10 @@ const PostShema = new mongoose.Schema({
     description: String,
     timeToRead: Number,
     text: String,
-    username: String,
+    username: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     createdAt: {
         type: Date,
         default: new Date()

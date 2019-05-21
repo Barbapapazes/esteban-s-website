@@ -43,6 +43,7 @@ app.set('view engine', 'pug');
 
 // Use definition for express
 if (environment !== 'production') {
+    app.set('json spaces', 2);
     app.use(logger('dev'));
 }
 app.use(express.json());

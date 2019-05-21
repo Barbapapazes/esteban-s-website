@@ -11,10 +11,11 @@ exports.validateToken = (req, res, next) => {
         }
         try {
             // verify makes sure thet the token hsn't expired and has been issued by us
-            result = jwt.verify(token, 'addjsonwebtokensecretherelikeQuiscustodietipsoscustodes', options)
+            result = jwt.verify(token, process.env.JWT_SECRET, options)
                 // Let's pass back the decoded token to the request object
                 // We call next to pass execution to the subsequent middleware
-            if (result && result.user === 'admin')
+            console.log(result)
+            if (result && result.role === 'admin' && req.session.role === 'admin')
                 next();
             else {
                 result = {

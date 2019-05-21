@@ -7,7 +7,7 @@ block content
                 fieldset
                     .form-group.title-input
                         label(for="title") title
-                        input(type="text", name="title", id="title",placeholder="title")
+                        input(type="text", name="title", id="title",placeholder="title", autofocus)
                     .form-group.subtitle-input
                         label(for="subtitle") subtitle
                         input(type="text", name="subtitle", id="subtitle",placeholder="subtitle")
@@ -16,21 +16,18 @@ block content
                         input(type="text", name="description", id="description",placeholder="description")
                     .form-group.text-input
                         label(for="text") text
-                        textarea(name="text", id="text", cols="30", rows="10", placeholder="text")
-
+                        textarea(name="text", id="text", cols="30", rows="10", placeholder='text')
                     .form-group.genre-input
                         label(for="genre") genre
                         for genre in genres
                             input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
                             label(for=genre._id) #{genre.name}
-                            
-                    
                     .form-group.timeToRead-input
                         label(for="timeToRead") time to read
                         input(type="number",name="timeToRead", id="timeToRead", placeholder="minutes")
                     .form-group.username-input
                         label(for="username") username
-                        input(type="text", name="username", id="username",placeholder="username")
+                        input(type="text", name="username", id="username",value=username, readonly)
                     .form-group.button-input
                         button(type="submit") submit
                         button(type="reset") reset
