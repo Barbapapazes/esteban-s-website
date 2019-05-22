@@ -1,6 +1,6 @@
-// Show available languages
+// Display available languages
 exports.index = function(req, res) {
-    res.render('lang', { i18n: res, langs: req.i18n.getLocales() });
+    res.render('lang');
 }
 
 // Change language and return to /home

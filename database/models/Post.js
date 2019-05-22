@@ -8,7 +8,10 @@ const PostShema = new mongoose.Schema({
     subtitle: String,
     description: String,
     timeToRead: Number,
-    text: String,
+    text: {
+        type: String,
+        required: true
+    },
     username: {
         type: Schema.Types.ObjectId,
         ref: 'User'

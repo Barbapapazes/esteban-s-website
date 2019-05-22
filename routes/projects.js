@@ -13,24 +13,31 @@ router.get('/', projects_controller.projects)
 // GET all projects
 router.get('/all', projects_controller.getAll)
 
-// GET create post page
-router.get('/posts/create', validateToken.validateToken, projects_controller.post)
+/// POSTS INSTANCES ROUTES ///
 
-//POST a new post 
-router.post('/posts/store', validateToken.validateToken, projects_controller.store_post)
+// GET create post
+router.get('/post/create', validateToken.validateToken, projects_controller.create_post)
+
+// POST new post 
+router.post('/post/store', validateToken.validateToken, projects_controller.store_post)
 
 // GET view post page
-router.get('/post/:id', projects_controller.viewPost)
+router.get('/post/:id', projects_controller.view_post)
 
-// GET create genre page
-router.get('/genre/create', validateToken.validateToken, projects_controller.genre)
+/// GENRES ROUTES ///
 
-//POST a new genre: 
+// GET create genre
+router.get('/genre/create', validateToken.validateToken, projects_controller.create_genre)
+
+// POST new genre
 router.post('/genre/store', validateToken.validateToken, projects_controller.store_genre)
 
-// GET view post page
-router.get('/genre/:id', projects_controller.view_genre)
+// GET view post, using the genre filter
+router.get('/genre/:id', projects_controller.view_genre_posts)
 
-// GET view post page
-router.get('/user/:id', projects_controller.view_userPosts)
+/// USERS ROUTES ///
+
+// GET view post, using the user filter
+router.get('/user/:id', projects_controller.view_user_posts)
+
 module.exports = router;

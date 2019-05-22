@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
 const connectMongo = require('connect-mongo')
+const connectFlash = require('connect-flash')
 
 // Router for all routes
 const indexRouter = require('./routes/index')
@@ -37,8 +38,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true })
     .catch(err => console.error('Something went wrong', err))
 
 // View engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
 
 
 // Use definition for express
@@ -47,11 +48,11 @@ if (environment !== 'production') {
     app.use(logger('dev'));
 }
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use('/stylesheets', sassMiddleware);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }))
+app.use('/stylesheets', sassMiddleware)
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(cookieParser("PSZg88X]cu;U`vs<"));
+app.use(cookieParser("PSZg88X]cu;U`vs<"))
 
 // create the store for cookies id
 const mongoStore = connectMongo(session)
@@ -65,7 +66,8 @@ app.use(session({
     store: new mongoStore({
         mongooseConnection: mongoose.connection
     })
-}));
+}))
+app.use(connectFlash())
 
 //init i18n after cookie-parser
 app.use(i18n.init);
@@ -75,6 +77,8 @@ app.use(function(req, res, next) {
     req.i18n = i18n;
     console.log(req.session)
     res.locals.session = req.session
+    res.locals.i18n = res
+    res.locals.langs = i18n.getLocales()
     next();
 })
 

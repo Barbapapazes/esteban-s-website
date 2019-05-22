@@ -6,13 +6,15 @@ const usersController = require('../controllers/usersController')
 const validateToken = require('../auth/utils')
 const redirectIfAuthenticated = require('../middlewares/redirectIfAuthenticated')
 
+/// USERS ROUTES ///
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.send('not implemented')
-});
+// GET dashbord of a user
+router.get('/', validateToken.validateToken, usersController.dashbord);
 
-// POST to add user
+// GET request to see all users
+router.get('/all', validateToken.validateToken, usersController.getAll)
+
+// POST add user
 router.post('/sign-in', usersController.signIn)
 
 // GET & POST to login
@@ -22,7 +24,4 @@ router.get('/login', redirectIfAuthenticated, usersController.loginPage)
 // GET to logout
 router.get('/logout', usersController.logout)
 
-// GET request to see all users
-router.get('/all', validateToken.validateToken, usersController.getAll)
-
-module.exports = router;
+module.exports = router

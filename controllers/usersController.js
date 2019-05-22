@@ -5,6 +5,10 @@ const { sanitizeBody } = require('express-validator/filter')
 const User = require('../database/models/User')
 const Role = require('../database/models/Role')
 
+exports.dashbord = (req, res, next) => {
+    res.json(req.session)
+}
+
 // create user
 exports.signIn = [
 

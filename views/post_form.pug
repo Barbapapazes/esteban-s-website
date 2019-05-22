@@ -3,7 +3,7 @@ extends layout.pug
 block content
     .content
         .dashbord
-            form(action="/projects/posts/store", method="POST")
+            form(action="/projects/post/store", method="POST")
                 fieldset
                     .form-group.title-input
                         label(for="title") title
@@ -16,7 +16,7 @@ block content
                         input(type="text", name="description", id="description",placeholder="description")
                     .form-group.text-input
                         label(for="text") text
-                        textarea(name="text", id="text", cols="30", rows="10", placeholder='text')
+                        textarea(name="text", id="text", cols="30", rows="10", placeholder='text', required)
                     .form-group.genre-input
                         label(for="genre") genre
                         for genre in genres

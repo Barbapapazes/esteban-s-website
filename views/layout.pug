@@ -17,7 +17,7 @@ html
           a(href="/projects") #{i18n.__("layout.projects")}
           a(href= "/about") #{i18n.__("layout.about")}
           block menu
-          if (session.username)
+          if (session)
             a(href= "/users/logout") logout
 
           i.fas.fa-times.btn-close
@@ -25,6 +25,11 @@ html
       .container
         .container__toggle-btn
          .container__toggle-btn__inner-cercle
+    if (errors)
+      ul.flash-messages.errors
+        for error in errors
+         li #{error}
+
     block content
     block foot
       footer

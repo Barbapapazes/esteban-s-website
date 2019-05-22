@@ -1,9 +1,9 @@
-// Show about home page
+// Display about home
 exports.about = function(req, res, next) {
-    res.render('about', { i18n: res, langs: req.i18n.getLocales() });
+    res.render('about')
 }
 
-// Show me page
+// Display me
 exports.me = function(req, res, next) {
-    res.render('me', { i18n: res, langs: req.i18n.getLocales() });
+    res.render('me')
 }
