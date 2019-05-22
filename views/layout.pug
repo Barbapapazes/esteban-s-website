@@ -17,7 +17,7 @@ html
           a(href="/projects") #{i18n.__("layout.projects")}
           a(href= "/about") #{i18n.__("layout.about")}
           block menu
-          if (session)
+          if (session.user)
             a(href= "/users/logout") logout
 
           i.fas.fa-times.btn-close
