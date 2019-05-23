@@ -1,5 +1,7 @@
 doctype html
+//HTML
 html
+  //HEAD
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
@@ -7,9 +9,12 @@ html
     title= "Esteban's Website"
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css")
+  //BODY
   body.dark
+    //HEADER
     block header
     header
+      //NAV
       nav.sidenav
         i.fas.fa-bars.btn-show
         ul.menu
@@ -26,11 +31,16 @@ html
         .container__toggle-btn
          .container__toggle-btn__inner-cercle
     if (errors)
-      ul.flash-messages.errors
-        for error in errors
-         li #{error}
-
+      //FLASH MESSAGES
+      .flash-messages.errors
+        ul
+          for error in errors
+            li #{error}
+    
+    
+    //CONTENT
     block content
+    //FOOTER
     block foot
       footer
         .me
@@ -38,6 +48,7 @@ html
         .lang
           for lang in langs
             a(href="/lang/" + lang class="lang__btn") #{lang}
+    //SCRIPTS
     block scripts      
       script(src="/javascripts/toggleBtn.min.js")
       script(src="/javascripts/url.min.js")

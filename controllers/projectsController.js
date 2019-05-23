@@ -67,10 +67,14 @@ exports.create_post = async(req, res) => {
             req.flash('mongoErrors', mongoErrors)
             return res.redirect('/')
         }
+        let errors = req.flash('mongoErrors')
+        if (Object.keys(errors).length == 0) {
+            errors = undefined
+        }
         res.render('post_form', {
             genres: genres,
             username: req.session.user.name,
-            errors: req.flash('mongoErrors')
+            errors: errors
         })
     })
 }
