@@ -16,8 +16,8 @@ router.get('/all', validateToken.validateToken, usersController.getAll)
 
 // GET & POST add user
 router
-    .get('/sign-in', usersController.signIn_get)
-    .post('/sign-in', usersController.signIn_post)
+    .get('/sign-in', redirectIfAuthenticated, usersController.signIn_get)
+    .post('/sign-in', redirectIfAuthenticated, usersController.signIn_post)
 
 // GET & POST to login
 router.get('/login', redirectIfAuthenticated, usersController.loginPage)

@@ -131,8 +131,12 @@ exports.view_post = async(req, res) => {
 }
 
 exports.create_genre = function(req, res) {
+    let errors = req.flash('mongoErrors')
+    if (Object.keys(errors).length == 0) {
+        errors = undefined
+    }
     res.render('genre_form', {
-        errors: req.flash('mongoErrors')
+        errors: errors
     })
 }
 
