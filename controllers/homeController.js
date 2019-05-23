@@ -1,14 +1,12 @@
 // Home page of the site
 exports.home = function(req, res, next) {
-    let errors = []
-    console.log(req.flash())
-    if (Object.keys(req.flash('mongoErrors')).length !== 0) {
-        errors = req.flash()
+    if (Object.keys(req.flash('mongoErrors')).length > 0) {
+        res.render('index', {
+            errors: req.flash('mongoErrors')
+        })
     } else {
-        errors = undefined
+        res.render('index', {
+            errors: req.flash('Authenticated')
+        })
     }
-    console.log(errors)
-    res.render('index', {
-        errors: errors
-    })
 }
