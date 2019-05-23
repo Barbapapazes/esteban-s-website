@@ -9,8 +9,12 @@ exports.dashbord = (req, res, next) => {
     res.json(req.session)
 }
 
+exports.signIn_get = (req, res, next) => {
+    res.render('sign-in_form')
+}
+
 // create user
-exports.signIn = [
+exports.signIn_post = [
 
     // Validate that the name field is not empty.
     body('name', 'Min: 3 characters').isLength({ min: 3 }).trim(),
@@ -48,7 +52,7 @@ exports.signIn = [
 
 // Display the login page
 exports.loginPage = (req, res) => {
-    res.render('login', { i18n: res, langs: req.i18n.getLocales() });
+    res.render('login_form');
 }
 
 // login

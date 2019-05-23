@@ -14,8 +14,10 @@ router.get('/', validateToken.validateToken, usersController.dashbord);
 // GET request to see all users
 router.get('/all', validateToken.validateToken, usersController.getAll)
 
-// POST add user
-router.post('/sign-in', usersController.signIn)
+// GET & POST add user
+router
+    .get('/sign-in', usersController.signIn_get)
+    .post('/sign-in', usersController.signIn_post)
 
 // GET & POST to login
 router.get('/login', redirectIfAuthenticated, usersController.loginPage)
