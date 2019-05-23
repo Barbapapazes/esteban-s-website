@@ -9,7 +9,10 @@ const redirectIfAuthenticated = require('../middlewares/redirectIfAuthenticated'
 /// USERS ROUTES ///
 
 // GET dashbord of a user
-router.get('/', validateToken.validateToken, usersController.dashbord);
+router.get('/', usersController.index)
+
+// GET dashbord of a user
+router.get('/dashbord', validateToken.validateToken, usersController.dashbord)
 
 // GET request to see all users
 router.get('/all', validateToken.validateToken, usersController.getAll)
@@ -20,7 +23,8 @@ router
     .post('/sign-in', redirectIfAuthenticated, usersController.signIn_post)
 
 // GET & POST to login
-router.get('/login', redirectIfAuthenticated, usersController.loginPage)
+router
+    .get('/login', redirectIfAuthenticated, usersController.loginPage)
     .post('/login', redirectIfAuthenticated, usersController.login)
 
 // GET to logout

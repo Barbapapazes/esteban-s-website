@@ -1,19 +1,27 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { body, check, oneOf, validationResult } = require('express-validator/check')
-const { sanitizeBody } = require('express-validator/filter')
+const { body, validationResult } = require('express-validator/check')
+
+// Require for models from DB
 const User = require('../database/models/User')
 const Role = require('../database/models/Role')
 
+// Redirect to the dashbord
+exports.index = (req, res, next) => {
+    res.redirect('/users/dashbord')
+}
+
+// Display the dashbord
 exports.dashbord = (req, res, next) => {
     res.json(req.session)
 }
 
+// Display the sign-in form
 exports.signIn_get = (req, res, next) => {
     res.render('sign-in_form')
 }
 
-// create user
+// Create new user
 exports.signIn_post = [
 
     // Validate that the name field is not empty.
@@ -52,15 +60,15 @@ exports.signIn_post = [
 
 // Display the login page
 exports.loginPage = (req, res) => {
-    res.render('login_form');
+    res.render('login_form')
 }
 
-// login
+// Login the user
 exports.login = async(req, res) => {
-    const { name, password } = req.body;
+    const { name, password } = req.body
 
-    let result = {};
-    let status = 200;
+    let result = {}
+    let status = 200
 
     await User.findOne({ name }).populate('role').exec((err, user) => {
         if (!err && user) {
@@ -93,17 +101,17 @@ exports.login = async(req, res) => {
                 result.status = status;
                 result.error = err;
                 res.status(status).send(result);
-            });
+            })
         } else {
             status = 404;
             result.status = status;
             result.error = err;
             res.status(status).send(result);
         }
-    });
+    })
 }
 
-
+// Logout user
 exports.logout = (req, res, next) => {
     req.session.destroy((err) => {
         if (err) throw err
@@ -112,21 +120,21 @@ exports.logout = (req, res, next) => {
 }
 
 
-// show all users 
+// Display all users 
 exports.getAll = (req, res, next) => {
     let result = {}
     let status = 200
     User.find({}, (err, users) => {
         if (!err) {
-            result.status = status;
-            result.error = err;
-            result.result = users;
+            result.status = status
+            result.error = err
+            result.result = users
             result.username = req.session.username
         } else {
             status = 500;
-            result.status = status;
-            result.error = err;
+            result.status = status
+            result.error = err
         }
-        res.status(status).send(result);
-    });
+        res.status(status).send(result)
+    })
 }
