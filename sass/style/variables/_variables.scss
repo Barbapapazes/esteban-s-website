@@ -150,6 +150,8 @@ Mixins
     }
     hr {
         border: $border;
+        border-radius: $border-radius;
+        background-color: $color;
     }
     article.article {
         h1,
