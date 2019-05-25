@@ -125,7 +125,8 @@ exports.view_post = async(req, res) => {
             // Render the markdown to HTML
             post.text = md.render(post.text)
             res.render('article', {
-                post: post
+                post: post,
+                id: req.params.id
             })
         })
 }
