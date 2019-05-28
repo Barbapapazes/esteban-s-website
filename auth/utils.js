@@ -14,7 +14,7 @@ exports.validateToken = (req, res, next) => {
             result = jwt.verify(token, process.env.JWT_SECRET, options)
 
             // We call next to pass execution to the subsequent middleware
-            console.log(result)
+            //console.log(result)
             if (result && result.role === 'admin' && req.session.role === 'admin')
                 next();
             else {

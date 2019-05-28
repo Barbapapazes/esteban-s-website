@@ -3,15 +3,26 @@ const mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const PostShema = new mongoose.Schema({
-    genre: [{ type: Schema.Types.ObjectId, ref: 'Genre' }],
-    title: String,
-    subtitle: String,
-    description: String,
-    timeToRead: Number,
-    text: {
-        type: String,
-        required: true
+    en: {
+        title: String,
+        subtitle: String,
+        description: String,
+        text: {
+            type: String,
+            required: true
+        },
     },
+    fr: {
+        title: String,
+        subtitle: String,
+        description: String,
+        text: {
+            type: String,
+            required: true
+        }
+    },
+    genre: [{ type: Schema.Types.ObjectId, ref: 'Genre' }],
+    timeToRead: Number,
     username: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -20,6 +31,7 @@ const PostShema = new mongoose.Schema({
         type: Date,
         default: new Date()
     }
+
 })
 
 // Virtual for post's URL

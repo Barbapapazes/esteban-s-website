@@ -5,18 +5,19 @@ block content
         .dashbord
             form(action="/projects/post/store", method="POST")
                 fieldset
-                    .form-group.title-input
-                        label(for="title") title
-                        input(type="text", name="title", id="title",placeholder="title", autofocus)
-                    .form-group.subtitle-input
-                        label(for="subtitle") subtitle
-                        input(type="text", name="subtitle", id="subtitle",placeholder="subtitle")
-                    .form-group.description-input
-                        label(for="description") description
-                        input(type="text", name="description", id="description",placeholder="description")
-                    .form-group.text-input
-                        label(for="text") text
-                        textarea(name="text", id="text", cols="30", rows="10", placeholder='text', required)
+                    for lang in langs
+                        div(class="form-group " + lang + "_title-input")
+                            label(for=lang + "_title") title
+                            input(type="text", name=lang + "_title", id=lang + "_title",placeholder="title", autofocus)
+                        div(class="form-group " + lang + "_subtitle-input")
+                            label(for=lang + "_subtitle") subtitle
+                            input(type="text", name=lang + "_subtitle", id=lang + "_subtitle",placeholder="subtitle")
+                        div(class="form-group " + lang + "_description-input")
+                            label(for=lang + "_description") description
+                            input(type="text", name=lang + "_description", id=lang + "_description",placeholder="description")
+                        div(class="form-group " + lang + "_text-input")
+                            label(for=lang + "_text") text
+                            textarea(name=lang + "_text", id=lang + "_text", cols="30", rows="10", placeholder='text', required)
                     .form-group.genre-input
                         label(for="genre") genre
                         for genre in genres

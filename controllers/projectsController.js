@@ -45,6 +45,7 @@ exports.projects = async(req, res) => {
         }
         res.render('projects', {
             posts: posts,
+            userLang: req.getLocale()
         })
     })
 }
@@ -96,8 +97,25 @@ exports.store_post = [
     },
 
     (req, res) => {
+        let data = {
+            en: {
+                title: req.body.en_title,
+                subtitle: req.body.en_subtitle,
+                description: req.body.en_description,
+                text: req.body.en_text,
+            },
+            fr: {
+                title: req.body.fr_title,
+                subtitle: req.body.fr_subtitle,
+                description: req.body.fr_description,
+                text: req.body.fr_text,
+            },
+            timeToRead: req.body.timeToRead,
+            username: req.body.username,
+            genre: [...req.body.genre]
+        }
         Post.create({
-            ...req.body
+            ...data
         }, (err, post) => {
             if (err) {
                 const mongoErrors = Object.keys(err.errors).map(key => err.errors[key].message)
