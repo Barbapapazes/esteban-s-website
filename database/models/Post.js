@@ -45,8 +45,14 @@ PostShema.virtual('day').get(function() {
 })
 
 // Virtual for post's month
-PostShema.virtual('month').get(function() {
-    return (this.createdAt).toLocaleString('en-us', { month: 'short' })
+PostShema.virtual('en_month').get(function() {
+    return this.createdAt.toLocaleString('en-US', { month: 'short' })
+})
+
+// Virtual for post's month
+// can't have the month in FR
+PostShema.virtual('fr_month').get(function() {
+    return this.createdAt.toLocaleString('fr-FR', { month: 'numeric' })
 })
 
 const Post = mongoose.model('Post', PostShema)
