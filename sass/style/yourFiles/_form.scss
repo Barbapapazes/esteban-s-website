@@ -17,7 +17,11 @@ form {
             margin: 0 0 10px 10px;
             padding: 0;
         }
-        .form-group {
+        .lang_input {
+            display: flex;
+            flex-direction: row;
+        }
+        .form_group {
             text-transform: capitalize;
             & :first-child {
                 margin-top: 10px;
@@ -32,7 +36,7 @@ form {
             input {
                 padding: 3px;
             }
-            &.button-input {
+            &.button_input {
                 & :first-child {
                     margin-bottom: 10px;
                 }

@@ -5,30 +5,32 @@ block content
         .dashbord
             form(action="/projects/post/store", method="POST")
                 fieldset
-                    for lang in langs
-                        div(class="form-group " + lang + "_title-input")
-                            label(for=lang + "_title") title
-                            input(type="text", name=lang + "_title", id=lang + "_title",placeholder="title", autofocus)
-                        div(class="form-group " + lang + "_subtitle-input")
-                            label(for=lang + "_subtitle") subtitle
-                            input(type="text", name=lang + "_subtitle", id=lang + "_subtitle",placeholder="subtitle")
-                        div(class="form-group " + lang + "_description-input")
-                            label(for=lang + "_description") description
-                            input(type="text", name=lang + "_description", id=lang + "_description",placeholder="description")
-                        div(class="form-group " + lang + "_text-input")
-                            label(for=lang + "_text") text
-                            textarea(name=lang + "_text", id=lang + "_text", cols="30", rows="10", placeholder='text', required)
-                    .form-group.genre-input
+                    .lang_input
+                        for lang in langs
+                            div(class=lang + "_input")              
+                                div(class="form-group " + lang + "_title-input")
+                                    label(for=lang + "_title") title
+                                    input(type="text", name=lang + "_title", id=lang + "_title",placeholder="title", autofocus)
+                                div(class="form-group " + lang + "_subtitle-input")
+                                    label(for=lang + "_subtitle") subtitle
+                                    input(type="text", name=lang + "_subtitle", id=lang + "_subtitle",placeholder="subtitle")
+                                div(class="form-group " + lang + "_description-input")
+                                    label(for=lang + "_description") description
+                                    input(type="text", name=lang + "_description", id=lang + "_description",placeholder="description")
+                                div(class="form-group " + lang + "_text-input")
+                                    label(for=lang + "_text") text
+                                    textarea(name=lang + "_text", id=lang + "_text", cols="30", rows="10", placeholder='text', required)
+                    .form_group.genre_input
                         label(for="genre") genre
                         for genre in genres
                             input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
                             label(for=genre._id) #{genre.name}
-                    .form-group.timeToRead-input
+                    .form_group.timeToRead_input
                         label(for="timeToRead") time to read
                         input(type="number",name="timeToRead", id="timeToRead", placeholder="minutes")
-                    .form-group.username-input
+                    .form_group.username_input
                         label(for="username") username
                         input(type="text", name="username", id="username",value=username, readonly)
-                    .form-group.button-input
+                    .form_group.button_input
                         button(type="submit") submit
                         button(type="reset") reset
