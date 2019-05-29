@@ -1,30 +1,32 @@
 extends layout.pug
 
 block content
-    .content
-        .dashbord
+    .scroll
             form(action="/projects/post/store", method="POST")
                 fieldset
                     .lang_input
                         for lang in langs
-                            div(class=lang + "_input")              
-                                div(class="form-group " + lang + "_title-input")
+                            div(class=lang + "_input")
+                                .lang_title #{lang}
+                                div(class="form_group " + lang + "_title-input")
                                     label(for=lang + "_title") title
                                     input(type="text", name=lang + "_title", id=lang + "_title",placeholder="title", autofocus)
-                                div(class="form-group " + lang + "_subtitle-input")
+                                div(class="form_group " + lang + "_subtitle-input")
                                     label(for=lang + "_subtitle") subtitle
                                     input(type="text", name=lang + "_subtitle", id=lang + "_subtitle",placeholder="subtitle")
-                                div(class="form-group " + lang + "_description-input")
+                                div(class="form_group " + lang + "_description-input")
                                     label(for=lang + "_description") description
                                     input(type="text", name=lang + "_description", id=lang + "_description",placeholder="description")
-                                div(class="form-group " + lang + "_text-input")
+                                div(class="form_group " + lang + "_text-input")
                                     label(for=lang + "_text") text
                                     textarea(name=lang + "_text", id=lang + "_text", cols="30", rows="10", placeholder='text', required)
                     .form_group.genre_input
-                        label(for="genre") genre
-                        for genre in genres
-                            input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
-                            label(for=genre._id) #{genre.name}
+                        label genre
+                        .genre_list
+                            for genre in genres
+                                .input
+                                    label(for=genre._id) #{genre.name}
+                                    input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
                     .form_group.timeToRead_input
                         label(for="timeToRead") time to read
                         input(type="number",name="timeToRead", id="timeToRead", placeholder="minutes")

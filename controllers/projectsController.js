@@ -141,11 +141,16 @@ exports.view_post = async(req, res) => {
                 return res.redirect('/')
             }
             // Render the markdown to HTML
-            post.text = md.render(post.text)
+            if (req.getLocale() == 'en')
+                post.en.text = md.render(post.en.text)
+            else
+                post.fr.text = md.render(post.fr.text)
             res.render('article', {
                 post: post,
-                id: req.params.id
+                id: req.params.id,
+                lang: req.getLocale()
             })
+
         })
 }
 

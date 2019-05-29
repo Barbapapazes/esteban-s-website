@@ -49,6 +49,31 @@
     }
 }
 
+.scroll {
+    width: 100%;
+    min-height: 96%;
+    padding: 40px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    &__content {
+        padding-left: 20px;
+        padding-top: 20px;
+        line-height: 1.3rem;
+    }
+    &__title {
+        font-weight: 200;
+        font-size: 2rem;
+        text-transform: capitalize;
+        &::after {
+            content: " ";
+            display: block;
+            margin-top: 2px;
+            width: 60%;
+            height: 1px;
+        }
+    }
+}
+
 .posts {
     width: 100%;
     min-height: 96%;

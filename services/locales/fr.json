@@ -3,7 +3,8 @@
         "title": "Site Web d'Estéban",
         "home": "acceuil",
         "projects": "projets",
-        "about": "A propos"
+        "about": "a propos",
+        "create": "Créer"
     },
     "index": {
         "title": "<hello world>",

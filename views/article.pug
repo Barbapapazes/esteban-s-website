@@ -3,8 +3,12 @@ extends layout
 block content
     article.article
         if (post)
-            | #{post.title}
-            | !{post.text}
+            if (lang == 'en')
+                | #{post.en.title}
+                | !{post.en.text}
+            else 
+                | #{post.fr.title}
+                | !{post.fr.text}
         hr
         #disqus_thread
         script.

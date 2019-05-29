@@ -1,8 +1,7 @@
 form {
-    max-width: 600px;
-    width: 50%;
-    min-width: 250px;
+    display: flex;
     margin: 20px;
+    height: auto;
     fieldset {
         display: flex;
         flex-direction: column;
@@ -17,9 +16,19 @@ form {
             margin: 0 0 10px 10px;
             padding: 0;
         }
+        .en_input,
+        .fr_input {
+            display: flex;
+            flex-direction: column;
+            .lang_title {
+                align-self: center;
+                text-transform: uppercase;
+            }
+        }
         .lang_input {
             display: flex;
             flex-direction: row;
+            margin-top: 10px;
         }
         .form_group {
             text-transform: capitalize;
@@ -36,6 +45,23 @@ form {
             input {
                 padding: 3px;
             }
+            .genre_list {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                height: auto;
+                flex-wrap: wrap;
+                .input {
+                    label {
+                        margin: 0;
+                        padding: 5px;
+                    }
+                    .checkbox-input {
+                        margin: 0;
+                        padding: 5px;
+                    }
+                }
+            }
             &.button_input {
                 & :first-child {
                     margin-bottom: 10px;
@@ -46,6 +72,16 @@ form {
                     font-weight: 700;
                     cursor: pointer;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    form {
+        fieldset {
+            .lang_input {
+                flex-direction: column;
             }
         }
     }

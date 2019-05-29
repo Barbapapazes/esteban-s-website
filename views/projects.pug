@@ -2,7 +2,7 @@ extends layout.pug
 
 block menu
  if (session.role === 'admin')
-    a(href= "/projects/post/create") create
+    a(href= "/projects/post/create") #{i18n.__("layout.create")}
 
 block content
     main.posts 

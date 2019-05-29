@@ -3,7 +3,8 @@
         "title": "Esteban's Website",
         "home": "home",
         "projects": "projects",
-        "about": "About"
+        "about": "about",
+        "create": "create"
     },
     "index": {
         "title": "<hello world>",
