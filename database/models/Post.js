@@ -22,6 +22,7 @@ const PostShema = new mongoose.Schema({
         }
     },
     genre: [{ type: Schema.Types.ObjectId, ref: 'Genre' }],
+    image: String,
     timeToRead: Number,
     username: {
         type: Schema.Types.ObjectId,

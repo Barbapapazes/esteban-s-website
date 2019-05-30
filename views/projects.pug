@@ -11,7 +11,7 @@ block content
             article.card
                 .card__thumb
                     a(href=post.url)
-                        img(src="https://via.placeholder.com/370x235")
+                        img(src=post.image, width="370", height="235")
                     .card__date
                         .card__date__day #{post.day}
                         if (userLang === "en")

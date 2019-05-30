@@ -118,11 +118,13 @@ Mixins
     }
     form {
         box-shadow: $depth-shadow-8;
+        border-radius: $border-radius;
         &:hover {
             box-shadow: $depth-shadow-16;
         }
         fieldset {
             border: $border;
+            border-radius: $border-radius;
             .lang_title {
                 color: $color;
             }
@@ -132,6 +134,15 @@ Mixins
                 }
                 input {
                     border: $border;
+                    border-radius: $border-radius;
+                }
+                #file_input {
+                    border: $border;
+                    border-radius: $border-radius;
+                    padding: 5px;
+                    &:hover {
+                        box-shadow: $depth-shadow-16;
+                    }
                 }
             }
         }
@@ -139,6 +150,7 @@ Mixins
     button {
         color: $color-text;
         border: $border;
+        border-radius: $border-radius;
         background-color: $color-background;
         &:hover {
             box-shadow: $depth-shadow-16;
@@ -176,6 +188,7 @@ Mixins
         background-color: $color-header-background;
         box-shadow: $depth-shadow-8;
         transition: box-shadow $duration-shorter;
+        border-radius: $border-radius;
         &__thumb {
             background-color: black;
         }
@@ -197,6 +210,7 @@ Mixins
         &__body {
             background-color: $color-header-background;
             transition: height $duration-shorter;
+            border-radius: $border-radius;
         }
         &__description {
             color: $color-text;

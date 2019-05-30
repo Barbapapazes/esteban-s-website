@@ -1,4 +1,5 @@
 const url = require('url')
+const path = require('path')
 
 // Require to use the markdown service
 const emoji = require('markdown-it-emoji')
@@ -114,16 +115,23 @@ exports.store_post = [
             username: req.body.username,
             genre: [...req.body.genre]
         }
-        Post.create({
-            ...data
-        }, (err, post) => {
-            if (err) {
-                const mongoErrors = Object.keys(err.errors).map(key => err.errors[key].message)
-                req.flash('mongoErrors', mongoErrors)
-                return res.redirect('/projects/post/create')
-            }
-            res.redirect('/')
+
+        const { image } = req.files
+
+        image.mv(path.resolve(__dirname, '..', 'public/posts', image.name), error => {
+            Post.create({
+                ...data,
+                image: `/posts/${image.name}`
+            }, (err, post) => {
+                if (err) {
+                    const mongoErrors = Object.keys(err.errors).map(key => err.errors[key].message)
+                    req.flash('mongoErrors', mongoErrors)
+                    return res.redirect('/projects/post/create')
+                }
+                res.redirect('/')
+            })
         })
+
     }
 ]
 

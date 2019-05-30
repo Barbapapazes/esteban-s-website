@@ -62,6 +62,13 @@ form {
                     }
                 }
             }
+            #file_input {
+                align-self: center;
+                cursor: pointer;
+            }
+            input[type=file] {
+                display: none;
+            }
             &.button_input {
                 & :first-child {
                     margin-bottom: 10px;

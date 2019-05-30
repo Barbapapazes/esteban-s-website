@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
     .scroll
-            form(action="/projects/post/store", method="POST")
+            form(action="/projects/post/store", method="POST", encType="multipart/form-data")
                 fieldset
                     .lang_input
                         for lang in langs
@@ -20,6 +20,9 @@ block content
                                 div(class="form_group " + lang + "_text-input")
                                     label(for=lang + "_text") text
                                     textarea(name=lang + "_text", id=lang + "_text", cols="30", rows="10", placeholder='text', required)
+                    .form_group.banner_input
+                        label(for="banner", id="file_input") Choose a Banner
+                        input(type="file",name="image", id="banner", placeholder="banner")
                     .form_group.genre_input
                         label genre
                         .genre_list
