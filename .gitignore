@@ -1,5 +1,5 @@
 # posts contents
-public/posts
+public/posts/*
 
 # Logs
 logs
