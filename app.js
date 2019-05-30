@@ -9,6 +9,7 @@ const logger = require('morgan')
 const mongoose = require('mongoose')
 const connectMongo = require('connect-mongo')
 const connectFlash = require('connect-flash')
+const fileUpload = require('express-fileupload')
 
 // Router for all routes
 const indexRouter = require('./routes/index')
@@ -47,6 +48,7 @@ if (environment !== 'production') {
     app.set('json spaces', 2);
     app.use(logger('dev'));
 }
+app.use(fileUpload())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use('/stylesheets', sassMiddleware)
