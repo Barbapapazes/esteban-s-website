@@ -1,5 +1,8 @@
 # posts contents
-public/posts/*
+public/posts/*.svg
+public/posts/*.png
+public/posts/*.jpg 
+public/posts/*.jpeg
 
 # Logs
 logs
